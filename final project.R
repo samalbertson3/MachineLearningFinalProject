@@ -22,7 +22,11 @@ err_comp <- function(predicted,expected){
 training <- read.csv("pml-training.csv")
 testing <- read.csv("pml-testing.csv")
 
-for(col in 8:(dim(training)[2]-1)){
+
+subTrain_all <- training[,8:160]
+testSet <- testing[,8:160]
+
+for(col in 1:(dim(training)[2]-1)){
   training[,col] <- as.numeric(training[,col])
   testing[,col] <- as.numeric(testing[,col])
 }
@@ -30,8 +34,7 @@ for(col in 8:(dim(training)[2]-1)){
 #sec_first <- c(8,46,84,122)
 #sec_last <- c(45,83,121,159)
 
-subTrain_all <- training[,8:160]
-testSet <- testing[,8:160]
+
 
 #count the number of NAs per column
 count <- numeric(dim(subTrain_all)[2])
